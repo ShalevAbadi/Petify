@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "40117947380",
+    "firebase_url": "https://petify-12d89.firebaseio.com",
+    "project_id": "petify-12d89",
+    "storage_bucket": "petify-12d89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40117947380:android:fc3fa71be63989b4b487a1",
+        "android_client_info": {
+          "package_name": "com.example.petify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40117947380-3v0jokf0vnuttlc3u8fj19m2adhfr11m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.petify",
+            "certificate_hash": "9aaecef263b55a87dc93168ea12ad8039ef27e74"
+          }
+        },
+        {
+          "client_id": "40117947380-qouaplsod9m4d455oqep2p562rckijp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxLovTvkopZE270fDdcQP8f_w4nweZ7AE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40117947380-qouaplsod9m4d455oqep2p562rckijp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
