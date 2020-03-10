@@ -8,11 +8,11 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ProfileActivity extends AppCompatActivity {
+public class PetsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_main);
+        setContentView(R.layout.activity_pets_main);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
