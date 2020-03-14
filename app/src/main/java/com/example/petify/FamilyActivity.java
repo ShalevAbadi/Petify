@@ -27,7 +27,7 @@ public class FamilyActivity extends AppCompatActivity {
                 startActivity(new Intent(this, FamilyActivity.class));
                 return true;
             case R.id.pets_menu_btn:
-                startActivity(new Intent(this, PetsActivity.class));
+                startActivity(new Intent(this, PetsListActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
