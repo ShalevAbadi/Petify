@@ -47,8 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.family_menu_btn:
-                startActivity(new Intent(this, FamilyActivity.class));
+            case R.id.friends_menu_btn:
+                startActivity(new Intent(this, FriendsActivity.class));
                 return true;
             case R.id.pets_menu_btn:
                 startActivity(new Intent(this, PetsListActivity.class));

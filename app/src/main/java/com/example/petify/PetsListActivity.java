@@ -44,9 +44,8 @@ public class PetsListActivity extends AppCompatActivity {
         if (user != null) {
             PetsRef = FirebaseDatabase.getInstance().getReference().child(user.getUid()).child("Pets");
             FriendsRef = FirebaseDatabase.getInstance().getReference().child("Friendships");
-            retrievePetsList();
             l = findViewById(R.id.container);
-            renderPetsList();
+            retrievePetsList();
         }
     }
 
@@ -164,8 +163,8 @@ public class PetsListActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.family_menu_btn:
-                startActivity(new Intent(this, FamilyActivity.class));
+            case R.id.friends_menu_btn:
+                startActivity(new Intent(this, FriendsActivity.class));
                 return true;
             case R.id.pets_menu_btn:
                 startActivity(new Intent(this, PetsListActivity.class));

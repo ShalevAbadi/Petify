@@ -22,7 +22,7 @@
         <activity android:name=".PetsListActivity"/>
         <activity android:name=".PetActivity"/>
         <activity android:name=".ProfileActivity"/>
-        <activity android:name=".FamilyActivity"/>
+        <activity android:name=".FriendsActivity"/>
         <activity android:name=".NewPetActivity"/>
 
     </application>

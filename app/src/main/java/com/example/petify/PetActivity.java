@@ -1,5 +1,6 @@
 package com.example.petify;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -45,6 +48,7 @@ public class PetActivity extends AppCompatActivity {
             flexboxesContainer = findViewById(R.id.pet_container);
             aboutPet = (EditText) findViewById(R.id.about_pet);
             aboutPet.setText(pet.getAbout());
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             aboutPet.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -68,6 +72,12 @@ public class PetActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     pet.setAbout(aboutPet.getText().toString());
                     updateDB();
+                    InputMethodManager inputManager = (InputMethodManager)
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+                    aboutPet.clearFocus();
                     aboutBtn.setVisibility(View.INVISIBLE);
                 }
             });
@@ -212,8 +222,8 @@ public class PetActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.family_menu_btn:
-                startActivity(new Intent(this, com.example.petify.FamilyActivity.class));
+            case R.id.friends_menu_btn:
+                startActivity(new Intent(this, FriendsActivity.class));
                 return true;
             case R.id.pets_menu_btn:
                 startActivity(new Intent(this, PetsListActivity.class));

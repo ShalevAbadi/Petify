@@ -2,9 +2,7 @@ package com.example.petify;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyActivity extends AppCompatActivity {
+public class FriendsActivity extends AppCompatActivity {
     private List<Friend> friends = new ArrayList<>();
     RelativeLayout l;
     private FirebaseUser user;
@@ -44,7 +42,7 @@ public class FamilyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_family_main);
+        setContentView(R.layout.activity_friends_main);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -57,9 +55,9 @@ public class FamilyActivity extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(FamilyActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(FriendsActivity.this);
                     builder.setTitle("Add friend");
-                    final EditText friendPhoneField = new EditText(FamilyActivity.this);
+                    final EditText friendPhoneField = new EditText(FriendsActivity.this);
                     friendPhoneField.setHint("Enter friend phone without +");
                     builder.setView(friendPhoneField);
                     builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
@@ -91,9 +89,9 @@ public class FamilyActivity extends AppCompatActivity {
     }
 
     private void renderFriendsList() {
-        int petMargin = 10;
-        int petWidth = 400;
-        int petHeight = 400;
+        int friendMargin = 10;
+        int friendWidth = 400;
+        int friendHeight = 400;
         FlexboxLayout flexboxLayout = (FlexboxLayout) findViewById(R.id.flex_box);
         flexboxLayout.setFlexDirection(FlexDirection.ROW);
         flexboxLayout.setForegroundGravity(View.TEXT_ALIGNMENT_CENTER);
@@ -102,17 +100,17 @@ public class FamilyActivity extends AppCompatActivity {
             RelativeLayout friend_layout = new RelativeLayout(this);
             friend_layout.setGravity(Gravity.CENTER_HORIZONTAL);
             RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            rlp.setMargins(petMargin, petMargin, petMargin, petMargin);
-            ImageView imageView_pet = new ImageView(this);
-            imageView_pet.setId(i + 1);
-            imageView_pet.setImageResource(R.drawable.user);
-            ViewGroup.LayoutParams vlp = new ViewGroup.LayoutParams(petWidth, petHeight);
-            imageView_pet.setLayoutParams(vlp);
-            friend_layout.addView(imageView_pet);
+            rlp.setMargins(friendMargin, friendMargin, friendMargin, friendMargin);
+            ImageView imageView_friend = new ImageView(this);
+            imageView_friend.setId(i + 1);
+            imageView_friend.setImageResource(R.drawable.user);
+            ViewGroup.LayoutParams vlp = new ViewGroup.LayoutParams(friendWidth, friendHeight);
+            imageView_friend.setLayoutParams(vlp);
+            friend_layout.addView(imageView_friend);
             TextView name = new TextView(this);
             name.setText(friends.get(i).getName());
             RelativeLayout.LayoutParams tlp = new RelativeLayout.LayoutParams(
-                    petWidth,
+                    friendWidth,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
             tlp.addRule(RelativeLayout.BELOW, i + 1);
             name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -153,8 +151,8 @@ public class FamilyActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.family_menu_btn:
-                startActivity(new Intent(this, FamilyActivity.class));
+            case R.id.friends_menu_btn:
+                startActivity(new Intent(this, FriendsActivity.class));
                 return true;
             case R.id.pets_menu_btn:
                 startActivity(new Intent(this, PetsListActivity.class));

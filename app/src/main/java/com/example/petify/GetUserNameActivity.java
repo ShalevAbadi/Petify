@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -33,6 +34,8 @@ public class GetUserNameActivity extends AppCompatActivity {
             RootRef = FirebaseDatabase.getInstance().getReference();
             editTextName = findViewById(R.id.editTextName);
             Button btn = findViewById(R.id.buttonContinue);
+
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                 public void onClick(View v) {
