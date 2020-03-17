@@ -45,11 +45,6 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/colorPrimary" />
 
-        <Button
-            android:id="@+id/signout"
-            android:layout_width="30dp"
-            android:layout_height="20dp"/>
-
     </RelativeLayout>
 
 </RelativeLayout>

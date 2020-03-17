@@ -27,13 +27,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
             TextView tv1 = (TextView) findViewById(R.id.textView);
             tv1.setText("Welcome "+user.getDisplayName());
-            findViewById(R.id.signout).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FirebaseAuth.getInstance().signOut();
-                    finish();
-                }
-            });
         } else {
             finish();
         }
