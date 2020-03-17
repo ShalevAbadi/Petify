@@ -54,7 +54,7 @@
             android:layout_marginTop="20dp"
             android:digits="0123456789"
             android:drawablePadding="10dp"
-            android:hint="enter your mobile number"
+            android:hint="Mobile number without +"
             android:inputType="phone"
             android:maxLength="12" />
 
