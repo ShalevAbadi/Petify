@@ -5,7 +5,7 @@ public class Friend {
     String name;
     String phone;
 
-    public Friend() {
+    public Friend(){
 
     }
 

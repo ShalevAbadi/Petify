@@ -72,7 +72,9 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+
             String code = phoneAuthCredential.getSmsCode();
+
             if (code != null) {
                 editTextCode.setText(code);
                 verifyVerificationCode(code);
@@ -87,6 +89,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
+
             mVerificationId = s;
         }
     };
@@ -104,10 +107,12 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             new AlertDialog.Builder(context)
                     .setTitle("Authentication failed")
                     .setMessage(message)
+
                     .setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     })
+
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
@@ -131,10 +136,12 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                             new AlertDialog.Builder(context)
                                     .setTitle("Authentication failed")
                                     .setMessage(message)
+
                                     .setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                         }
                                     })
+
                                     .setIcon(android.R.drawable.ic_dialog_alert)
                                     .show();
                         }
