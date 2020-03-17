@@ -24,41 +24,25 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-import android.content.SharedPreferences;
-import com.google.gson.Gson;
-
-
 public class VerifyPhoneActivity extends AppCompatActivity {
 
-    //These are the objects needed
-    //It is the verification id that will be sent to the user
     private String mVerificationId;
-
-    //The edittext to input the code
     private EditText editTextCode;
-
-    //firebase auth object
     private FirebaseAuth mAuth;
-
     private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_phone);
-        //initializing objects
         mAuth = FirebaseAuth.getInstance();
         editTextCode = findViewById(R.id.editTextCode);
 
-        //getting mobile number from the previous activity
-        //and sending the verification code to the number
         Intent intent = getIntent();
         String mobile = intent.getStringExtra("mobile");
         sendVerificationCode(mobile);
 
 
-        //if the automatic sms detection did not work, user can also enter the code manually
-        //so adding a click listener to the button
         findViewById(R.id.buttonSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,16 +53,12 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     return;
                 }
 
-                //verifying the code entered manually
                 verifyVerificationCode(code);
             }
         });
 
     }
 
-    //the method is sending verification code
-    //the country id is concatenated
-    //you can take the country id as user input as well
     private void sendVerificationCode(String mobile) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 "+" + mobile,
@@ -89,20 +69,12 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     }
 
 
-    //the callback to detect the verification status
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-
-            //Getting the code sent by SMS
             String code = phoneAuthCredential.getSmsCode();
-
-            //sometime the code is not detected automatically
-            //in this case the code will be null
-            //so user has to manually enter the code
             if (code != null) {
                 editTextCode.setText(code);
-                //verifying the code
                 verifyVerificationCode(code);
             }
         }
@@ -115,18 +87,14 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
-
-            //storing the verification id that is sent to the user
             mVerificationId = s;
         }
     };
 
 
     private void verifyVerificationCode(String code) {
-        //creating the credential
         try {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
-            //signing the user
             signInWithPhoneAuthCredential(credential);
         } catch (Exception e) {
             String message = "Something is wrong";
@@ -136,16 +104,10 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             new AlertDialog.Builder(context)
                     .setTitle("Authentication failed")
                     .setMessage(message)
-
-                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                    // The dialog is automatically dismissed when a dialog button is clicked.
                     .setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // Continue with delete operation
                         }
                     })
-
-                    // A null listener allows the button to dismiss the dialog and take no further action.
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
@@ -158,12 +120,10 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //verification successful we will start the profile activity
                             Intent intent = new Intent(VerifyPhoneActivity.this, ProfileActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {
-                            //verification unsuccessful.. display an error message
                             String message = "Something is wrong";
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 message = "Invalid code entered...";
@@ -171,16 +131,10 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                             new AlertDialog.Builder(context)
                                     .setTitle("Authentication failed")
                                     .setMessage(message)
-
-                                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                                    // The dialog is automatically dismissed when a dialog button is clicked.
                                     .setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
-                                            // Continue with delete operation
                                         }
                                     })
-
-                                    // A null listener allows the button to dismiss the dialog and take no further action.
                                     .setIcon(android.R.drawable.ic_dialog_alert)
                                     .show();
                         }

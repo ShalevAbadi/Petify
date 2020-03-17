@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,7 +41,7 @@ public class PetActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             RootRef = FirebaseDatabase.getInstance().getReference();
-            resetIdNeeded();
+            resetDailyDataIfNeeded();
             flexboxesContainer = findViewById(R.id.pet_container);
             aboutPet = (EditText) findViewById(R.id.about_pet);
             aboutPet.setText(pet.getAbout());
@@ -78,8 +77,8 @@ public class PetActivity extends AppCompatActivity {
         }
     }
 
-    private void resetIdNeeded(){
-        Calendar c1 = Calendar.getInstance(); // today
+    private void resetDailyDataIfNeeded(){
+        Calendar c1 = Calendar.getInstance();
 
         Calendar c2 = Calendar.getInstance();
         c2.setTime(new Date(pet.getLastReset()));
