@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PetActivity">
 
     <TextView
@@ -33,8 +33,7 @@
             app:alignContent="flex_start"
             app:alignItems="flex_start"
             app:flexWrap="wrap"
-            app:showDivider="beginning|middle">
-        </com.google.android.flexbox.FlexboxLayout>
+            app:showDivider="beginning|middle"></com.google.android.flexbox.FlexboxLayout>
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/flex_box_walks"
@@ -45,29 +44,28 @@
             app:alignContent="flex_start"
             app:alignItems="flex_start"
             app:flexWrap="wrap"
-            app:showDivider="beginning|middle">
-        </com.google.android.flexbox.FlexboxLayout>
+            app:showDivider="beginning|middle"></com.google.android.flexbox.FlexboxLayout>
 
         <ImageView
-            android:id="@+id/button1"
+            android:id="@+id/about_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_below="@id/flex_box_walks"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:visibility="invisible"
             android:src="@drawable/pencil" />
 
         <EditText
-            android:id="@+id/pet_edit_text"
+            android:id="@+id/about_pet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button1"
-            android:gravity="top|left"
-            android:editable="false"
-            android:textSize="15pt"
-            android:minLines="10"
+            android:layout_below="@id/about_btn"
             android:background="#fcffa1"
-            android:scrollbars = "vertical" />
+            android:gravity="top|left"
+            android:minLines="10"
+            android:scrollbars="vertical"
+            android:textSize="15pt" />
     </RelativeLayout>
 
 </RelativeLayout>

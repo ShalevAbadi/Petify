@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
@@ -39,5 +39,17 @@
         </com.google.android.flexbox.FlexboxLayout>
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Add new pet"
+        android:textAllCaps="false"
+        android:background="#018713"
+        android:textColor="#ffffff"/>
 
 </RelativeLayout>

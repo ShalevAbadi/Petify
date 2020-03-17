@@ -24,6 +24,10 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
+import android.content.SharedPreferences;
+import com.google.gson.Gson;
+
+
 public class VerifyPhoneActivity extends AppCompatActivity {
 
     //These are the objects needed
@@ -77,7 +81,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     //you can take the country id as user input as well
     private void sendVerificationCode(String mobile) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+1" + mobile,
+                "+" + mobile,
                 60,
                 TimeUnit.SECONDS,
                 TaskExecutors.MAIN_THREAD,
@@ -148,6 +152,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        final PhoneAuthCredential credentialToSave = credential;
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(VerifyPhoneActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -182,5 +187,4 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }

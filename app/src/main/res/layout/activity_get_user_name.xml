@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".GetUserNameActivity">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/colorPrimary"
@@ -22,17 +22,17 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_below="@id/relativeLayout"
+        android:layout_below="@id/relativeLayout1"
         android:layout_marginTop="-50dp" />
 
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/imageView"
+        android:layout_below="@id/imageView2"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -42,27 +42,26 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:text="May I ask your phone number?"
+            android:text="May I ask your name?"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/colorPrimary" />
 
         <EditText
-            android:id="@+id/editTextMobile"
+            android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textView"
             android:layout_marginTop="20dp"
-            android:digits="0123456789"
             android:drawablePadding="10dp"
-            android:hint="enter your mobile number"
-            android:inputType="phone"
-            android:maxLength="12" />
+            android:hint="enter your name"
+            android:inputType="text"
+            android:maxLength="15" />
 
         <Button
             android:id="@+id/buttonContinue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextMobile"
+            android:layout_below="@id/editTextName"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:background="@color/colorPrimaryDark"
